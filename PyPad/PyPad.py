@@ -53,7 +53,7 @@ class PyPadGUI:
     def blankEditor(self):
         sg.theme("DarkBlue")
         layout = [
-            [sg.Text(f"Untitled", font=("Arial", 10)), sg.Button("New"),sg.Button("Save"), sg.Button("Open"), sg.Button("Close")],
+            [sg.Button("New"),sg.Button("Save"), sg.Button("Open"), sg.Button("Close")],
             [sg.Multiline(f"", size=(100, 50), key="editArea")],
         ]
         window = sg.Window(f"PyPad v{version} - Untitled", layout=layout)
@@ -94,7 +94,7 @@ class PyPadGUI:
             
         sg.theme("DarkBlue")
         layout = [
-            [sg.Text(f"{file}", font=("Arial", 10)), sg.Button("New"), sg.Button("Save"), sg.Button("Open"), sg.Button("Close")],
+            [sg.Button("New"), sg.Button("Save"), sg.Button("Open"), sg.Button("Close")],
             [sg.Multiline(f"{fileData}", size=(100, 50), key="editArea")],
         ]
         window = sg.Window(f"PyPad v{version} - {file}", layout=layout)
