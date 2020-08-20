@@ -1,4 +1,5 @@
 import os
+import sys
 import threading
 import PySimpleGUI as sg
 
@@ -52,7 +53,7 @@ class PyPadGUI:
     def blankEditor(self):
         sg.theme("DarkBlue")
         layout = [
-            [sg.Text(f"Untitled", font=("Arial", 10)), sg.Text("", size=(59, 1)), sg.Button("New"),sg.Button("Save"), sg.Button("Open"), sg.Button("Close")],
+            [sg.Text(f"Untitled", font=("Arial", 10)), sg.Button("New"),sg.Button("Save"), sg.Button("Open"), sg.Button("Close")],
             [sg.Multiline(f"", size=(100, 50), key="editArea")],
         ]
         window = sg.Window(f"PyPad v{version} - Untitled", layout=layout)
@@ -93,7 +94,7 @@ class PyPadGUI:
             
         sg.theme("DarkBlue")
         layout = [
-            [sg.Text(f"{file}", font=("Arial", 10)), sg.Text("", size=((59-len(file))-len(file)-50, 1)), sg.Button("New"), sg.Button("Save"), sg.Button("Open"), sg.Button("Close")],
+            [sg.Text(f"{file}", font=("Arial", 10)), sg.Button("New"), sg.Button("Save"), sg.Button("Open"), sg.Button("Close")],
             [sg.Multiline(f"{fileData}", size=(100, 50), key="editArea")],
         ]
         window = sg.Window(f"PyPad v{version} - {file}", layout=layout)
@@ -130,4 +131,11 @@ class PyPadGUI:
                     break
 
 gui = PyPadGUI()
-gui.blankEditor()
+
+if len(sys.argv) == 2:
+    if os.path.exists(sys.argv[1]):
+        gui.editor(sys.argv[1])
+    else:
+        print(f"Could not locate {sys.argv[1]}")
+elif len(sys.argv) == 1:
+    gui.blankEditor()
