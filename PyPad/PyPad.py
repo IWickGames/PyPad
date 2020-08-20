@@ -54,7 +54,7 @@ class PyPadGUI:
         sg.theme("DarkBlue")
         layout = [
             [sg.Button("New"),sg.Button("Save"), sg.Button("Open"), sg.Button("Close")],
-            [sg.Multiline(f"", size=(100, 50), key="editArea")],
+            [sg.Multiline(f"", size=(150, 50), key="editArea")],
         ]
         window = sg.Window(f"PyPad v{version} - Untitled", layout=layout)
 
@@ -95,7 +95,7 @@ class PyPadGUI:
         sg.theme("DarkBlue")
         layout = [
             [sg.Button("New"), sg.Button("Save"), sg.Button("Open"), sg.Button("Close")],
-            [sg.Multiline(f"{fileData}", size=(100, 50), key="editArea")],
+            [sg.Multiline(f"{fileData}", size=(150, 50), key="editArea")],
         ]
         window = sg.Window(f"PyPad v{version} - {file}", layout=layout)
 
